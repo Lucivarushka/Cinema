@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="203.625" y="0.0">main.java.com.moviehouse.repository.GenericRepository</node>
+    <node x="182.0" y="223.0">main.java.com.moviehouse.manager.TicketManager</node>
+    <node x="307.0" y="294.0">main.java.com.moviehouse.view.FilmView</node>
+    <node x="161.0" y="294.0">main.java.com.moviehouse.view.SeatView</node>
+    <node x="0.0" y="223.0">main.java.com.moviehouse.view.ConsoleHelper</node>
+    <node x="36.0" y="76.0">main.java.com.moviehouse.repository.FilmRepository</node>
+    <node x="578.0" y="294.0">main.java.com.moviehouse.model.Film</node>
+    <node x="207.125" y="76.0">main.java.com.moviehouse.repository.TicketRepository</node>
+    <node x="364.0" y="223.0">main.java.com.moviehouse.manager.SeatManager</node>
+    <node x="529.625" y="76.0">main.java.com.moviehouse.repository.SeatRepository</node>
+    <node x="0.0" y="365.0">main.java.com.moviehouse.model.Seat</node>
+    <node x="242.625" y="152.0">main.java.com.moviehouse.repository.io.JavaIOTicketRepositoryImpl</node>
+    <node x="0.0" y="152.0">main.java.com.moviehouse.repository.io.JavaIOFilmRepositoryImpl</node>
+    <node x="386.125" y="76.0">main.java.com.moviehouse.model.Ticket</node>
+    <node x="532.0" y="223.0">main.java.com.moviehouse.manager.FilmManager</node>
+    <node x="493.625" y="152.0">main.java.com.moviehouse.repository.io.JavaIOSeatRepositoryImpl</node>
+    <node x="453.0" y="294.0">main.java.com.moviehouse.Start</node>
+    <node x="0.0" y="294.0">main.java.com.moviehouse.view.TicketView</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.java.com.moviehouse.repository.io.JavaIOFilmRepositoryImpl" target="main.java.com.moviehouse.repository.FilmRepository">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.io.JavaIOSeatRepositoryImpl" target="main.java.com.moviehouse.repository.SeatRepository">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.TicketRepository" target="main.java.com.moviehouse.repository.GenericRepository">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.io.JavaIOTicketRepositoryImpl" target="main.java.com.moviehouse.model.Ticket">
+      <point x="57.75" y="-13.0" />
+      <point x="415.875" y="127.0" />
+      <point x="429.625" y="127.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.SeatRepository" target="main.java.com.moviehouse.repository.GenericRepository">
+      <point x="0.0" y="-13.0" />
+      <point x="601.625" y="51.0" />
+      <point x="341.95833333333337" y="51.0" />
+      <point x="55.33333333333337" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.io.JavaIOTicketRepositoryImpl" target="main.java.com.moviehouse.repository.TicketRepository">
+      <point x="-57.75" y="-13.0" />
+      <point x="300.375" y="127.0" />
+      <point x="286.625" y="127.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="main.java.com.moviehouse.repository.FilmRepository" target="main.java.com.moviehouse.repository.GenericRepository">
+      <point x="0.0" y="-13.0" />
+      <point x="108.0" y="51.0" />
+      <point x="231.29166666666669" y="51.0" />
+      <point x="-55.333333333333314" y="13.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="515.3333333333335" y="291.77777777777777" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
