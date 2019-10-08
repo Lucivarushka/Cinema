@@ -3,6 +3,7 @@ package main.java.com.moviehouse.repository.io;
 import main.java.com.moviehouse.model.Film;
 import main.java.com.moviehouse.model.Seat;
 import main.java.com.moviehouse.model.Ticket;
+import main.java.com.moviehouse.model.TypeSeat;
 import main.java.com.moviehouse.repository.TicketRepository;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseInt;
@@ -25,13 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static main.java.com.moviehouse.model.Seat.TypeSeat.ECONOMY;
+import static main.java.com.moviehouse.model.TypeSeat.ECONOMY;
 
 public class JavaIOTicketRepositoryImpl implements TicketRepository {
-    private static String FILE_TICKETS = "C:\\cinema1\\src\\main\\resources\\tickets.csv";
+    private static String FILE_TICKETS = "\\src\\main\\resources\\tickets.csv";
 
     @Override
-    public void create(Ticket newTicket) throws IOException{
+    public void create(Ticket newTicket) throws IOException {
         List<Ticket> tickets = getCSVParser();
         tickets.add(newTicket);
         createCSVFile(tickets);
@@ -44,7 +45,7 @@ public class JavaIOTicketRepositoryImpl implements TicketRepository {
         try {
             beanWriter = new CsvBeanWriter(new FileWriter(FILE_TICKETS),
                     CsvPreference.STANDARD_PREFERENCE);
-            final String[] header = new String[]{"numberTicket", "date", "film", "seat","price"};
+            final String[] header = new String[]{"numberTicket", "date", "film", "seat", "price"};
 
             final CellProcessor[] processors = getProcessors();
             beanWriter.writeHeader(header);
@@ -119,7 +120,7 @@ public class JavaIOTicketRepositoryImpl implements TicketRepository {
         return getCSVParser();
     }
 
-    private static CellProcessor[] getProcessors() {
+    private CellProcessor[] getProcessors() {
         return new CellProcessor[]{
                 new UniqueHashCode(),
                 new FmtLocalDate("yyyy-MM-dd"),
@@ -129,7 +130,7 @@ public class JavaIOTicketRepositoryImpl implements TicketRepository {
         };
     }
 
-    private static CellProcessor[] getProcessorsParsing() {
+    private CellProcessor[] getProcessorsParsing() {
         return new CellProcessor[]{
                 new UniqueHashCode(new ParseInt()),
                 new ParseLocalDate(),
@@ -141,12 +142,11 @@ public class JavaIOTicketRepositoryImpl implements TicketRepository {
 
     @Override
     public Long getPriceTicket(Film film, Seat seat) throws IOException {
-        Seat.TypeSeat ts = seat.getTypeSeat();
+        TypeSeat ts = seat.getTypeSeat();
         long price;
-        if(ts.equals(ECONOMY)){
+        if (ts.equals(ECONOMY)) {
             price = film.getPriceForEconomy();
-        }
-        else {
+        } else {
             price = film.getPriceForVip();
         }
         return price;

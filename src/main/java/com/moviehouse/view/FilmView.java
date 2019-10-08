@@ -1,9 +1,8 @@
 package main.java.com.moviehouse.view;
 
-import main.java.com.moviehouse.manager.FilmManager;
-import main.java.com.moviehouse.manager.TicketManager;
+import main.java.com.moviehouse.model.TypeGenre;
+import main.java.com.moviehouse.service.FilmService;
 import main.java.com.moviehouse.model.Film;
-import main.java.com.moviehouse.model.Film.TypeGenre;
 import org.joda.time.LocalDate;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FilmView {
-    private FilmManager filmManager = new FilmManager();
+    private FilmService filmService = new FilmService();
     private Scanner scanner = new Scanner(System.in);
 
     public static final String ACTIONS_FILM = "Введите действие:\n" +
@@ -21,13 +20,13 @@ public class FilmView {
             "4.Список всех фильмов\n";
 
     public void getMovies() throws IOException {
-        List<Film> films = filmManager.getAllFilm();
+        List<Film> films = filmService.getAllFilm();
         for (Film f : films) {
             System.out.println("ID: " + f.getIdFilm() + " Название: " + f.getNameFilm());
         }
     }
 
-    public void createFilm() throws IOException{
+    public void createFilm() throws IOException {
         System.out.println("Введите ID фильма:");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Введите название нового фильма:");
@@ -58,7 +57,7 @@ public class FilmView {
         int economy = Integer.parseInt(scanner.nextLine());
         System.out.println("Введите цену за VIP билет");
         int vip = Integer.parseInt(scanner.nextLine());
-        filmManager.createNewFilm(new Film(id, name, type, country, localDate, economy, vip));
+        filmService.createNewFilm(new Film(id, name, type, country, localDate, economy, vip));
         System.out.println("Фильм успешно добавлен");
     }
 
@@ -66,18 +65,18 @@ public class FilmView {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите ID фильма для его удаления:");
         long indexForDelete = Long.parseLong(scanner.next());
-        filmManager.deleteFilm(indexForDelete);
+        filmService.deleteFilm(indexForDelete);
     }
 
     public void searchFilm() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите любую информацию о фильме:");
         String search = scanner.next();
-        filmManager.getSearchFilm(search);
+        filmService.getSearchFilm(search);
     }
 
     public void getAllFilm() throws IOException {
-        List<Film> films = filmManager.getAllFilm();
+        List<Film> films = filmService.getAllFilm();
         for (Film f : films) {
             System.out.println(f);
         }

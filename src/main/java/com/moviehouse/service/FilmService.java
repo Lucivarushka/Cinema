@@ -1,4 +1,4 @@
-package main.java.com.moviehouse.manager;
+package main.java.com.moviehouse.service;
 
 import main.java.com.moviehouse.model.Film;
 import main.java.com.moviehouse.repository.FilmRepository;
@@ -7,7 +7,7 @@ import main.java.com.moviehouse.repository.io.JavaIOFilmRepositoryImpl;
 import java.io.IOException;
 import java.util.List;
 
-public class FilmManager {
+public class FilmService {
     private static FilmRepository filmRepository = new JavaIOFilmRepositoryImpl();
 
     public void createNewFilm(Film filmNew) throws IOException{

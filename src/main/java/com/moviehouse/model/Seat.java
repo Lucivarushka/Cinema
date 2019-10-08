@@ -5,21 +5,17 @@ public class Seat implements Comparable<Seat> {
     private int rowSeat;
     private int idTicket;
     private TypeSeat typeSeat;
-    private boolean taken;
-
-    public enum TypeSeat {
-        ECONOMY, VIP
-    }
+    private boolean isTaken;
 
     public Seat() {
     }
 
-    public Seat(int numberSeat, int idTicket, boolean taken) {
+    public Seat(int numberSeat, int idTicket, boolean isTaken) {
         this.numberSeat = numberSeat;
         this.rowSeat = defineRowSeat();
         this.idTicket = idTicket;
         this.typeSeat = defineTypeSeat();
-        this.taken = taken;
+        this.isTaken = isTaken;
     }
 
     public int getNumberSeat() {
@@ -55,11 +51,11 @@ public class Seat implements Comparable<Seat> {
     }
 
     public boolean isTaken() {
-        return taken;
+        return isTaken;
     }
 
     public void setTaken(boolean taken) {
-        this.taken = taken;
+        this.isTaken = taken;
     }
 
     private int defineRowSeat() {

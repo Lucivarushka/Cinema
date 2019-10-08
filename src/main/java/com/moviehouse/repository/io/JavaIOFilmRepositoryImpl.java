@@ -1,7 +1,7 @@
 package main.java.com.moviehouse.repository.io;
 
 import main.java.com.moviehouse.model.Film;
-import main.java.com.moviehouse.model.Film.TypeGenre;
+import main.java.com.moviehouse.model.TypeGenre;
 import main.java.com.moviehouse.repository.FilmRepository;
 import org.joda.time.LocalDate;
 import org.supercsv.cellprocessor.Optional;
@@ -27,13 +27,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class JavaIOFilmRepositoryImpl implements FilmRepository {
     private static List<Film> films = new ArrayList<>();
-    private static String FILE_FILMS = "C:\\cinema1\\src\\main\\resources\\films.csv";
-
-    public static void main(String[] args) {
-        Film h = new Film(5, "Join", Film.TypeGenre.CRIME, "USA",
-                LocalDate.parse("2019-10-09"), 400, 700);
-        createF(h);
-    }
+    private static String FILE_FILMS = "\\src\\main\\resources\\films.csv";
 
     static {
         films.add(new Film(1, "Spider man", TypeGenre.ADVENTURE, "France",
@@ -42,13 +36,8 @@ public class JavaIOFilmRepositoryImpl implements FilmRepository {
                 LocalDate.parse("2019-09-12"), 500, 800));
         films.add(new Film(3, "Crash", TypeGenre.ROMANCE, "Italy",
                 LocalDate.parse("2019-10-30"), 700, 1000));
-        films.add(new Film(4, "SuperNova", Film.TypeGenre.COMEDIE, "UK",
+        films.add(new Film(4, "SuperNova", TypeGenre.COMEDIE, "UK",
                 LocalDate.parse("2019-10-02"), 800, 1250));
-    }
-
-    public static void createF(Film newFilm) {
-        films.add(newFilm);
-        createCSV(films);
     }
 
     @Override
@@ -56,36 +45,6 @@ public class JavaIOFilmRepositoryImpl implements FilmRepository {
         films.add(newFilm);
         createCSVFile(films);
     }
-
-    public static void createCSV(List<Film> filmsForCSV) {
-        ICsvBeanWriter beanWriter = null;
-
-        try {
-            beanWriter = new CsvBeanWriter(new FileWriter(FILE_FILMS),
-                    CsvPreference.STANDARD_PREFERENCE);
-            final String[] header = new String[]{"idFilm", "NameFilm", "TypeGenre", "countryFilm", "releaseTime",
-                    "priceForEconomy", "priceForVIP"};
-
-            final CellProcessor[] processors = getProcessors();
-            beanWriter.writeHeader(header);
-
-            for (Film f : filmsForCSV) {
-                beanWriter.write(f, header, processors);
-            }
-
-            beanWriter.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                beanWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     @Override
     public void createCSVFile(List<Film> filmsForCSV) {

@@ -7,5 +7,7 @@ import main.java.com.moviehouse.model.Ticket;
 import java.io.IOException;
 
 public interface TicketRepository extends GenericRepository<Ticket, Long> {
+
     Long getPriceTicket(Film film, Seat seat) throws IOException;
+
 }

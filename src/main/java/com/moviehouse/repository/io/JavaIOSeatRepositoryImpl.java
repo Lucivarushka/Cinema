@@ -1,7 +1,7 @@
 package main.java.com.moviehouse.repository.io;
 
 import main.java.com.moviehouse.model.Seat;
-import main.java.com.moviehouse.model.Seat.TypeSeat;
+import main.java.com.moviehouse.model.TypeSeat;
 import main.java.com.moviehouse.repository.SeatRepository;
 import org.supercsv.cellprocessor.*;
 import org.supercsv.cellprocessor.constraint.NotNull;
@@ -22,16 +22,15 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class JavaIOSeatRepositoryImpl implements SeatRepository {
-    private static String FILE_SEATS = "C:\\cinema1\\src\\main\\resources\\seats.csv";
+    private String FILE_SEATS = "\\src\\main\\resources\\seats.csv";
 
     @Override
-    public void create(Seat newSeat) throws IOException{
+    public void create(Seat newSeat) throws IOException {
         List<Seat> nSeat = getCSVParserS();
         nSeat.add(newSeat);
         Collections.sort(nSeat);
         createCSVFileS(nSeat);
     }
-
 
     public void getAllFreeSeat(int idTicket) throws IOException {
         List<Seat> freeSeat = getCSVParser();
@@ -41,8 +40,6 @@ public class JavaIOSeatRepositoryImpl implements SeatRepository {
             }
         }
     }
-
-
 
     @Override
     public Seat getTakenSeat(int frSeat, int idTicket) throws IOException {
@@ -87,7 +84,7 @@ public class JavaIOSeatRepositoryImpl implements SeatRepository {
     }
 
 
-    public static void createCSVFileS(List<Seat> seatForCSV) {
+    public void createCSVFileS(List<Seat> seatForCSV) {
         ICsvBeanWriter beanWriter = null;
 
         try {
@@ -163,7 +160,7 @@ public class JavaIOSeatRepositoryImpl implements SeatRepository {
     }
 
 
-    public static List<Seat> getCSVParserS() throws IOException {
+    public List<Seat> getCSVParserS() throws IOException {
         List<Seat> seatsForParser = new CopyOnWriteArrayList<>();
         ICsvBeanReader csvBeanReader = new CsvBeanReader(new FileReader(FILE_SEATS),
                 CsvPreference.STANDARD_PREFERENCE);
@@ -190,7 +187,7 @@ public class JavaIOSeatRepositoryImpl implements SeatRepository {
         return getCSVParser();
     }
 
-    private static CellProcessor[] getProcessors() {
+    private CellProcessor[] getProcessors() {
         return new CellProcessor[]{
                 new UniqueHashCode(),
                 new NotNull(),
@@ -200,7 +197,7 @@ public class JavaIOSeatRepositoryImpl implements SeatRepository {
         };
     }
 
-    private static CellProcessor[] getProcessorsParsing() {
+    private CellProcessor[] getProcessorsParsing() {
         return new CellProcessor[]{
                 new UniqueHashCode(new ParseInt()),
                 new NotNull(new ParseInt()),

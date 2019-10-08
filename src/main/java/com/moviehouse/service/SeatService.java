@@ -1,4 +1,4 @@
-package main.java.com.moviehouse.manager;
+package main.java.com.moviehouse.service;
 
 import main.java.com.moviehouse.model.Seat;
 import main.java.com.moviehouse.repository.SeatRepository;
@@ -7,7 +7,7 @@ import main.java.com.moviehouse.repository.io.JavaIOSeatRepositoryImpl;
 import java.io.IOException;
 import java.util.List;
 
-public class SeatManager {
+public class SeatService {
     private static SeatRepository seatRepository = new JavaIOSeatRepositoryImpl();
 
     public void getSeat(int index) throws IOException {

@@ -1,4 +1,4 @@
-package main.java.com.moviehouse.manager;
+package main.java.com.moviehouse.service;
 
 import main.java.com.moviehouse.model.Film;
 import main.java.com.moviehouse.model.Seat;
@@ -9,7 +9,7 @@ import main.java.com.moviehouse.repository.io.JavaIOTicketRepositoryImpl;
 import java.io.IOException;
 import java.util.List;
 
-public class TicketManager {
+public class TicketService {
     private static TicketRepository ticketRepository = new JavaIOTicketRepositoryImpl();
 
     public void createNewTicket(Ticket ticketNew) throws IOException {
@@ -28,7 +28,7 @@ public class TicketManager {
         return ticketRepository.getAll();
     }
 
-    public Long getPriceForTicket(Film film, Seat seat) throws IOException{
-        return ticketRepository.getPriceTicket(film,seat);
+    public Long getPriceForTicket(Film film, Seat seat) throws IOException {
+        return ticketRepository.getPriceTicket(film, seat);
     }
 }

@@ -11,10 +11,6 @@ public class Film {
     private int priceForEconomy;
     private int priceForVip;
 
-    public enum TypeGenre {
-        ADVENTURE, ROMANCE, COMEDIE, CRIME, WAR, DRAMA;
-    }
-
     public Film() {
     }
 
